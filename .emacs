@@ -213,6 +213,7 @@
 (set-cursor-color "#ff0000")
 (add-to-list 'default-frame-alist '(font . "Source Code Pro for Powerline-13"))
 (set-face-background 'hl-line "#9ae4ff")
+(set-face-attribute 'region nil :background "#ffe89a" :foreground "#000")
 
 ;; ----------------------------------------------------------
 ;; Add password generator
