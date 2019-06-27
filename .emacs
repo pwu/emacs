@@ -97,6 +97,17 @@
                                "* TODO %i%?"))
       )
 
+(require 'graphviz-dot-mode)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (shell . t)
+   (python . t)
+   (dot . t)
+   ))
+
+
 ;; ----------------------------------------------------------
 ;; from org mode to reveal presentation [c-c c-e R R]
 
@@ -177,31 +188,6 @@
 (telephone-line-mode 1)
 
 ;; ----------------------------------------------------------
-;; Shotcuts
-
-(global-set-key (kbd "C-t") 'open-term)
-(global-set-key (kbd "C-c n") 'new-buffer-frame-writable)
-
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-v") 'yank)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-(global-set-key (kbd "M-z") 'mc/mark-next-like-this)
-
-(global-set-key (kbd "<C-268632083>") 'swiper-all)
-
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
-
-(global-set-key (kbd "C-c g") 'magit-status)
-
-(global-set-key (kbd "C-c a") 'org-agenda)
-
-(global-set-key (kbd "C-c c") 'org-capture)
-
-;; ----------------------------------------------------------
 ;; Yaml Mode
 
 (require 'yaml-mode)
@@ -279,3 +265,28 @@
 
 
 (server-start)
+
+;; ----------------------------------------------------------
+;; Shotcuts
+
+(global-set-key (kbd "C-t") 'open-term)
+(global-set-key (kbd "C-c n") 'new-buffer-frame-writable)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-v") 'yank)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+(global-set-key (kbd "M-z") 'mc/mark-next-like-this)
+
+(global-set-key (kbd "<C-268632083>") 'swiper-all)
+
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
+(global-set-key (kbd "C-c g") 'magit-status)
+
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+(global-set-key (kbd "C-c c") 'org-capture)
