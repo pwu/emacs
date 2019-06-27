@@ -4,6 +4,10 @@
 
 * my Emacs configuration
 
+** Screenshots 
+
+[[./screenshots/lisp.png]]
+
 ** Sources
 
 - http://www.tuteurs.ens.fr/unix/editeurs/super_emacs.html#s2
