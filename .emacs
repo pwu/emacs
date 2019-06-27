@@ -79,7 +79,7 @@
 
 (setq
  org-log-done 'time
- org-todo-keywords '((sequence "OPEN" "TODO" "IN PROGRESS" "PENDING" "|" "DONE") (sequence "|" "CANCELED"  ) )
+ org-todo-keywords '((sequence "TODO" "IN PROGRESS" "PENDING" "|" "DONE") (sequence "|" "CANCELED"  ) )
  org-confirm-babel-evaluate nil)
 
 (org-babel-do-load-languages
@@ -91,6 +91,11 @@
    ))
 
 (add-hook 'org-mode-hook 'turn-on-font-lock)
+
+(setq org-capture-templates '(("t" "Todo [inbox]" entry
+                               (file+headline "~/taktik/todo.org" "Tasks")
+                               "* TODO %i%?"))
+      )
 
 ;; ----------------------------------------------------------
 ;; from org mode to reveal presentation [c-c c-e R R]
@@ -194,6 +199,8 @@
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 
+(global-set-key (kbd "C-c c") 'org-capture)
+
 ;; ----------------------------------------------------------
 ;; Yaml Mode
 
@@ -202,13 +209,21 @@
 ;; ----------------------------------------------------------
 ;; Look
 
+(load-theme 'doneburn)
 (set-cursor-color "#ff0000")
-(add-to-list 'default-frame-alist '(font . "Source Code Pro for Powerline-12"))
+(add-to-list 'default-frame-alist '(font . "Source Code Pro for Powerline-13"))
+(set-face-background 'hl-line "#9ae4ff")
 
 ;; ----------------------------------------------------------
 ;; Add password generator
 
 (require 'password-generator)
+
+;; ----------------------------------------------------------
+;; Beacon
+
+(require 'beacon)
+(beacon-mode 1)
 
 ;; ----------------------------------------------------------
 ;; configuration
