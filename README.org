@@ -1,14 +1,13 @@
-#+TITLE: pwu emacs
+#+TITLE: pwu-emacs
 #+STARTUP: hidestars
 #+STARTUP: indent
 
-* my Emacs configuration
 
-** Screenshots 
+* Screenshots 
 
 [[./screenshots/lisp.png]]
 
-** Sources
+* Sources
 
 - http://www.tuteurs.ens.fr/unix/editeurs/super_emacs.html#s2
 - https://stackoverflow.com/questions/6997387/how-to-archive-all-the-done-tasks-using-a-single-command
@@ -22,6 +21,6 @@
 - https://github.com/syohex/emacs-git-gutter
 - https://github.com/dakrone/eos/blob/master/eos.org
 
-** Changelog 
+* Changelog 
 
 2019/06/29 : Draft
