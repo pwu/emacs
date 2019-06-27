@@ -4,6 +4,20 @@
 
 * my Emacs configuration
 
+** Sources
+
+http://www.tuteurs.ens.fr/unix/editeurs/super_emacs.html#s2
+https://stackoverflow.com/questions/6997387/how-to-archive-all-the-done-tasks-using-a-single-command
+https://github.com/magnars/s.el
+https://debbugs.gnu.org/cgi/bugreport.cgi?bug=20611
+https://oremacs.com/2015/01/01/three-ansi-term-tips/
+https://manuel-uberti.github.io/emacs/2017/08/06/eyebrowse/
+https://github.com/syohex/emacs-anzu
+http://pragmaticemacs.com/emacs/pop-up-a-quick-shell-with-shell-pop/
+http://ivanmalison.github.io/dotfiles/#tile
+https://github.com/syohex/emacs-git-gutter
+https://github.com/dakrone/eos/blob/master/eos.org
+
 ** Changelog 
 
 2019/06/29 : Draft
