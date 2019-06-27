@@ -203,6 +203,12 @@
 ;; Look
 
 (set-cursor-color "#ff0000")
+(add-to-list 'default-frame-alist '(font . "Source Code Pro for Powerline-12"))
+
+;; ----------------------------------------------------------
+;; Add password generator
+
+(require 'password-generator)
 
 ;; ----------------------------------------------------------
 ;; configuration
@@ -214,7 +220,6 @@
  compilation-scroll-output 'first-error
  confirm-kill-processes nil            
  create-lockfiles nil                  
- default-directory "~/dev/"            
  enable-recursive-minibuffers t        
  inhibit-startup-screen t              
  kill-whole-line t                     
