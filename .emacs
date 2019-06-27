@@ -165,6 +165,12 @@
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;; ---------------------------------------------------------
+;; Telephone line
+
+(require 'telephone-line)
+(telephone-line-mode 1)
+
 ;; ----------------------------------------------------------
 ;; Shotcuts
 
@@ -188,7 +194,15 @@
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 
+;; ----------------------------------------------------------
+;; Yaml Mode
 
+(require 'yaml-mode)
+
+;; ----------------------------------------------------------
+;; Look
+
+(set-cursor-color "#ff0000")
 
 ;; ----------------------------------------------------------
 ;; configuration
@@ -196,27 +210,27 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq  
- compilation-always-kill t              ; Never prompt to kill a compilation session.
- compilation-scroll-output 'first-error ; Always scroll to the bottom.
- confirm-kill-processes nil             ; don't whine at me when I'm quitting.
- create-lockfiles nil                   ; Emacs sure loves to put lockfiles everywhere.
- default-directory "~/dev/"             ; My code lives here.
- enable-recursive-minibuffers t         ; don't fucking freak out if I use the minibuffer twice
- inhibit-startup-screen t               ; No need to see GNU agitprop.
- kill-whole-line t                      ; Lets C-k delete the whole line
- mac-drawing-use-gcd t                  ; and you can do it on other frames
- mac-mouse-wheel-smooth-scroll nil      ; no smooth scrolling
- mark-even-if-inactive nil              ; prevent really unintuitive undo behavior
- require-final-newline t                ; Auto-insert trailing newlines.
- ring-bell-function 'ignore             ; Do not ding. Ever.
- save-interprogram-paste-before-kill t  ; preserve paste to system ring
- sentence-end-double-space nil          ; are you fucking kidding me with this shit
- use-dialog-box nil                     ; Dialogues always go in the modeline.
- user-full-name "Gustin Gaël"       ; it me
- auto-revert-verbose nil      ;; turn off auto revert messages
+ compilation-always-kill t             
+ compilation-scroll-output 'first-error
+ confirm-kill-processes nil            
+ create-lockfiles nil                  
+ default-directory "~/dev/"            
+ enable-recursive-minibuffers t        
+ inhibit-startup-screen t              
+ kill-whole-line t                     
+ mac-drawing-use-gcd t                 
+ mac-mouse-wheel-smooth-scroll nil     
+ mark-even-if-inactive nil             
+ require-final-newline t               
+ ring-bell-function 'ignore            
+ save-interprogram-paste-before-kill t 
+ sentence-end-double-space nil
+ use-dialog-box nil           
+ user-full-name "Gustin Gaël" 
+ auto-revert-verbose nil   
  auto-save-default nil
  column-number-mode t
- global-auto-revert-mode 1    ;; reread on disk
+ global-auto-revert-mode 1
  inhibit-startup-message t
  mac-command-key-is-meta t
  mac-command-modifier 'meta
@@ -224,19 +238,23 @@
  message-kill-buffer-on-exit t
  org-agenda-files (file-expand-wildcards "~/taktik/todo.org")
  save-interprogram-paste-before-kill t
- scroll-bar-mode -1
  set-keyboard-coding-system nil
- tool-bar-mode -1
  tramp-completion-reread-directory-timeout nil
  tramp-default-method "ssh"
  truncate-lines t
  visible-bell t
- 
+ telephone-line-height 18
+ custom-file "~/.emacs.d/custom.el"
+ frame-title-format (list '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
  )
 
-(global-hl-line-mode t)              ; Always highlight the current line.
-(show-paren-mode t)                  ; And point out matching parentheses.
-(delete-selection-mode t)            ; Behave like any other sensible text editor would.
-(save-place-mode) ; Remember where I wasr
+(load custom-file)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(global-hl-line-mode t)  
+(show-paren-mode t)      
+(delete-selection-mode t)
+(save-place-mode)
+
 
 (server-start)
