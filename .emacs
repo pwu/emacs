@@ -82,19 +82,11 @@
  org-todo-keywords '((sequence "TODO" "IN PROGRESS" "PENDING" "|" "DONE") (sequence "|" "CANCELED"  ) )
  org-confirm-babel-evaluate nil)
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '(
-   (shell . t)
-   (python . t)
-   (dot . t)
-   ))
-
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/taktik/todo.org" "Tasks")
-                               "* TODO %i%?"))
+                               "* TODO [/] %i%?\n\n :JIRA-LINK: \n\n - [ ]"))
       )
 
 (require 'graphviz-dot-mode)
@@ -107,6 +99,10 @@
    (dot . t)
    ))
 
+;; ---
+
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
 
 ;; ----------------------------------------------------------
 ;; from org mode to reveal presentation [c-c c-e R R]
@@ -195,10 +191,9 @@
 ;; ----------------------------------------------------------
 ;; Look
 
-(load-theme 'doneburn)
+(load-theme 'doneburn t)
 (set-cursor-color "#ff0000")
-(add-to-list 'default-frame-alist '(font . "Source Code Pro for Powerline-13"))
-(set-face-background 'hl-line "#9ae4ff")
+;;(set-face-background 'hl-line "#9ae4ff")
 (set-face-attribute 'region nil :background "#ffe89a" :foreground "#000")
 
 ;; ----------------------------------------------------------
@@ -250,7 +245,6 @@
  tramp-default-method "ssh"
  truncate-lines t
  visible-bell t
- telephone-line-height 18
  custom-file "~/.emacs.d/custom.el"
  frame-title-format (list '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
  )
