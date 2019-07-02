@@ -40,6 +40,36 @@
   )
 
 ;; ----------------------------------------------------------
+;; kill all buffer
+
+(autoload 'diff-no-select "diff")
+
+(defun current-buffer-matches-file-p ()
+  "Return t if the current buffer is identical to its associated file."
+  (when (and buffer-file-name (buffer-modified-p))
+    (diff-no-select buffer-file-name (current-buffer) nil 'noasync)
+    (with-current-buffer "*Diff*"
+(and (search-forward-regexp "^Diff finished \(no differences\)\." (point-max) 'noerror) t))))
+
+(defun maybe-unset-buffer-modified (&optional _)
+  "Clear modified bit on all unmodified buffers."
+  (interactive)
+  (dolist (buf (buffer-list))
+    (with-current-buffer buf
+      (when (and buffer-file-name (buffer-modified-p) (current-buffer-matches-file-p))
+        (set-buffer-modified-p nil)))))
+
+;; Don't prompt to save unmodified buffers on exit.
+(advice-add 'save-buffers-kill-emacs :before #'maybe-unset-buffer-modified)
+
+(defun kill-all-buffers ()
+  "Close all buffers."
+  (interactive)
+  (maybe-unset-buffer-modified)
+  (save-some-buffers)
+  (mapc 'kill-buffer-with-prejudice (buffer-list)))
+
+;; ----------------------------------------------------------
 ;; change encoding to unix
 
 (defun dos2unix ()
@@ -86,7 +116,7 @@
 
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/taktik/todo.org" "Tasks")
-                               "* TODO [/] %i%?\n\n :JIRA-LINK: \n\n - [ ]"))
+                               "* TODO [/] %i%?\n\n :JIRA-LINK: \n\n - [ ]\n\n"))
       )
 
 (require 'graphviz-dot-mode)
@@ -247,6 +277,7 @@
  visible-bell t
  custom-file "~/.emacs.d/custom.el"
  frame-title-format (list '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
+ tramp-completion-reread-directory-timeout nil
  )
 
 (load custom-file)
@@ -256,9 +287,12 @@
 (show-paren-mode t)      
 (delete-selection-mode t)
 (save-place-mode)
-
-
 (server-start)
+
+;; 
+
+(add-to-list 'load-path "~/.emacs.d/org-protocol")
+(require 'org-protocol)
 
 ;; ----------------------------------------------------------
 ;; Shotcuts
@@ -284,3 +318,5 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 
 (global-set-key (kbd "C-c c") 'org-capture)
+
+(bind-key "C-c k" 'kill-all-buffers)
